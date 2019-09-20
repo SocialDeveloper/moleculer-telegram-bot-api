@@ -1,0 +1,55 @@
+{
+  "name": "moleculer-telegram-bot-api",
+  "version": "1.0.1",
+  "description": "Send Messages to Telegram bot api",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon examples/index.js",
+    "ci": "jest --watch",
+    "test": "jest --coverage",
+    "lint": "eslint --ext=.js src test",
+    "deps": "npm-check -u",
+    "readme": "node node_modules/moleculer-docgen/index.js -t README.md src/index.js",
+    "coverall": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "keywords": [
+    "microservice",
+    "moleculer"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:SocialDeveloper/moleculer-telegram-bot-api.git"
+  },
+  "homepage": "https://github.com/SocialDeveloper/moleculer-telegram-bot-api/tree/master/packages/moleculer-telegram-bot-api#readme",
+  "author": "Tom Stepanov",
+  "license": "MIT",
+  "peerDependencies": {
+    "moleculer": "^0.14.0 || ^0.13.0 || ^0.12.0"
+  },
+  "devDependencies": {
+    "benchmarkify": "2.1.2",
+    "coveralls": "3.0.2",
+    "eslint": "5.2.0",
+    "jest": "23.4.2",
+    "jest-cli": "23.4.2",
+    "lolex": "2.7.1",
+    "moleculer": "0.13.10",
+    "moleculer-docgen": "0.2.2",
+    "nodemon": "1.18.3",
+    "npm-check": "5.7.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/services/"
+    ]
+  },
+  "engines": {
+    "node": ">= 6.x.x"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.30.0",
+    "dotenv": "^6.0.0"
+  }
+}

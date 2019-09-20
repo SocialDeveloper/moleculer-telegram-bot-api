@@ -34,12 +34,30 @@ broker.createService({
 broker.start().then(() => {
 
     broker
-        .call("onMessage")
+        .call("on", {
+            type: 'text',
+            callback: (msg) => {
+                let params = {
+                    typeContent: 'msg',
+                    chatId: '' + msg.chat.id,
+                    messageId: msg.message_id,
+                    message: msg.text,
+                    username: msg.from.username,
+                    userId: msg.from.id,
+                    user: msg.from,
+                };
+                        
+                console.log("New Message received:", params);
+            }
+        })
         .then((msg) => {
             const chatId = msg.chat.id;
               
             // send a message to the chat acknowledging receipt of their message
-            broker.call("telegram.sendMessage", chatId, 'Received your message');
+            broker.call("telegram.sendMessage", {
+                chatId, 
+                message: 'Received your message'
+            });
         })
         .catch(console.error);
 
